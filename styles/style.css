@@ -1,0 +1,37 @@
+#splash-screen {
+    display: flex; 
+}
+
+#game-screen {
+    display: none; 
+}
+
+#game-over-screen {
+    display: none; 
+}
+
+body {
+    background-color: beige;
+}
+
+.container {
+    display: flex;
+    flex-direction: column; 
+    justify-content: center;
+    align-items: center;
+    margin: 100px; 
+}
+
+#start-btn, #game-over-btn {
+background-color: green;
+color: white;
+
+}
+
+#game-box {
+    background-color: gray;
+    width: 950px;
+    height: 500px;
+    position: relative; 
+    overflow: hidden; 
+}

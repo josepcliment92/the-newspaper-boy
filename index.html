@@ -3,9 +3,35 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>The Newspaper Boy</title>
+    <link rel="stylesheet" href="./styles/style.css">
 </head>
 <body>
     
+<!-- SPLASH SCREEN -->
+<div id="splash-screen" class="container">
+    <h2 id="splash-title">THE NEWSPAPER BOY</h2>
+    <img src=" " alt="newspaper-boy-inicio">
+    <p id="splash-text">Reparte periódicos con tu bicicleta y no pierdas el ritmo, ¡los vecinos se enfadarán si no pueden leer las noticias! </p>
+    <button id="start-btn">START NOW!</button>
+</div>
+
+
+<!-- GAME SCREEN -->
+<div id="game-screen" class="container"> <!-- aquí se coloca el score, fuera de la caja de juegos pero dentro de la pantalla -->
+<div id="game-box"> <!--aquí se coloca la game box, la caja en la que se juega --> </div>
+</div>
+
+
+<!-- GAME OVER SCREEN -->
+<div id="game-over-screen" class="container">
+<h2 id="game-over-title">GAME OVER</h2>
+<p id="game-over-text">Has repartido X periódicos, ¡no está mal! Pero sé que puedes hacerlo mejor. Vuelve a intentarlo y ¡supérate!</p>
+<button id="game-over-btn">START AGAIN!</button>
+</div>
+
+
+<script src="./js/main.js"></script>
+
 </body>
 </html>
