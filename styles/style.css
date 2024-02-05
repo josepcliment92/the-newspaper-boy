@@ -19,7 +19,7 @@ body {
     flex-direction: column; 
     justify-content: center;
     align-items: center;
-    margin: 100px; 
+    margin: 20px; 
 }
 
 #start-btn, #game-over-btn {
@@ -34,4 +34,9 @@ color: white;
     height: 500px;
     position: relative; 
     overflow: hidden; 
+    user-select: none; 
+
+    background-image: url("../images/floor.jpg");
+    /*background-position: center;
+    background-size: cover;*/
 }
