@@ -5,15 +5,22 @@ this.gameIntervalFrequency = Math.round(1000/60) // esto es para indicar los 60f
 this.boyObj = new Boy();
 this.housesArr = [];
 
+this.houseEjemplo = new House();
+
 }
 
 // métodos de la clase
+
+gameLoop(){
+// aquí incluimos todas las acciones que están dentro del loop del juego, que se activa al iniciar el juego
+
+}
 
 //el bucle del juego. Todo el juego está en un bucle, generado por un intervalo
 gameStart() {
 setInterval(() => {
     
-//
+    this.gameLoop();
 
 }, this.gameIntervalFrequency)
 }

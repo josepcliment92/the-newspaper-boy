@@ -2,9 +2,9 @@ class Boy {
   //propiedades (variables que necesitamos para dibujar al repartidor)
   constructor() {
     this.x = 50; //posición desde eje X (izquierda de la pantalla)
-    this.y = 250; //posición desde eje Y (borde superior de la pantalla de juego, no de la pantalla total) REVISAR, NO FUNCIONA
-    this.w = 75; //width (anchura del repartidor)
-    this.y = 75; //height (altura del repartidor)
+    this.y = 200; //posición desde eje Y (borde superior de la pantalla de juego, no de la pantalla total)
+    this.w = 85; //width (anchura del repartidor)
+    this.h = 85; //height (altura del repartidor)
 
     this.node = document.createElement("img");
     this.node.src = "./images/newspaper-boy.png";
@@ -21,7 +21,7 @@ class Boy {
 
   //lanzar el periódico (disparar a los elementos para alterarlos, es decir, alterar su imagen)
 
-
+    //offsetHeight y offsetWidth --> identificar el alto y ancho de un elemento (lo usaré para el gameBox) --> gameBox.offsetHeight es un ejemplo
 
 
 }
