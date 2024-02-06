@@ -17,7 +17,11 @@ gameScreen.style.display = "flex";
 
 // objeto del juego basado en una clase. new Game()
 gameObj = new Game() 
+//aquí se inicia el juego y todos los intervalos que arrancan con el inicio del juego pero no están dentro del gameLoop, porque no suceden 60fps.
 gameObj.gameStart()
+gameObj.housesAppearUp();
+setTimeout(gameObj.housesAppearDown(), 5000); // REVISAR PORQUÉ NO FUNCIONA, PREGUNTAR A JORGE
+//gameObj.housesAppearDown()
 
 }
 
