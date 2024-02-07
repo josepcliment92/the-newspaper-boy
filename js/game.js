@@ -3,6 +3,7 @@ class Game {
     // propiedades de la clase
     this.gameIntervalFrequency = Math.round(1000 / 60); // esto es para indicar los 60fps. 60 veces por segundo.
     this.boyObj = new Boy();
+    this.newspaperObj = new Newspaper();
     this.housesArr = [];
     this.houseAppearanceFrequency = 1500;
 
@@ -14,20 +15,24 @@ class Game {
 
   // métodos de la clase
 
-  housesAppearUp() {
+  housesAppearUp = () => {
     //indicar que cada segundo aparece una nueva casa
-    setInterval(() => {
+    setInterval(() => { 
       let newHouseUp = new House("arriba");
       this.housesArr.push(newHouseUp);
+      //console.log("aparece una casa arriba")
     }, this.houseAppearanceFrequency);
+    //console.log("aparecen casas arriba")
   }
 
-  housesAppearDown() {
+  housesAppearDown = () => {
     //indicar que cada segundo aparece una nueva casa
     setInterval(() => {
       let newHouseDown = new House("abajo");
       this.housesArr.push(newHouseDown);
+      //console.log("aparece una casa abajo")
     }, this.houseAppearanceFrequency);
+    //console.log("aparecen casas abajo")
   }
 
   gameLoop() {
