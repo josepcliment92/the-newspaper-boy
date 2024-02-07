@@ -4,6 +4,8 @@ class Game {
     this.gameIntervalFrequency = Math.round(1000 / 60); // esto es para indicar los 60fps. 60 veces por segundo.
     this.boyObj = new Boy();
     this.newspaperObj = new Newspaper();
+    this.newspaperUpArr = [];
+    this.newspaperDownArr = [];
     this.housesArr = [];
     this.houseAppearanceFrequency = 1500;
 
@@ -17,13 +19,13 @@ class Game {
 
   housesAppearUp = () => {
     //indicar que cada segundo aparece una nueva casa
-    setInterval(() => { 
+    setInterval(() => {
       let newHouseUp = new House("arriba");
       this.housesArr.push(newHouseUp);
       //console.log("aparece una casa arriba")
     }, this.houseAppearanceFrequency);
     //console.log("aparecen casas arriba")
-  }
+  };
 
   housesAppearDown = () => {
     //indicar que cada segundo aparece una nueva casa
@@ -33,7 +35,52 @@ class Game {
       //console.log("aparece una casa abajo")
     }, this.houseAppearanceFrequency);
     //console.log("aparecen casas abajo")
+  };
+
+  newspaperUpAppear = () => {
+    let newNewspaper = new Newspaper();
+    this.newspaperUpArr.push(newNewspaper);
+  };
+
+  newspaperDownAppear = () => {
+    let newNewspaper = new Newspaper();
+    this.newspaperDownArr.push(newNewspaper);
+  };
+
+  /*collitionNewspaperHouseUp() {
+    this.newspaperUpArr.forEach((eachHouseObj) => {
+      if (
+        newspaperObj.x < eachHouseObj.x + eachHouseObj.w &&
+        newspaperObj.x + newspaperObj.w > eachHouseObj.x &&
+        newspaperObj.y < eachHouseObj.y + eachHouseObj.h &&
+        newspaperObj.y + newspaperObj.h > eachHouseObj.y
+      ) {
+        this.gameOver;
+      }
+    });
+  }*/
+
+  collitionNewspaperHouseUp() {
+    this.newspaperUpArr.forEach((eachNewspaperObj) => {
+      if (eachNewspaperObj.y < 50) {
+        this.gameOver;
+      }
+    });
   }
+
+
+  /*collitionNewspaperHouseDown() {
+    this.newspaperDownArr.forEach((eachHouseObj) => {
+      if (
+        newspaperObj.x < eachHouseObj.x + eachHouseObj.w &&
+        newspaperObj.x + newspaperObj.w > eachHouseObj.x &&
+        newspaperObj.y < eachHouseObj.y + eachHouseObj.h &&
+        newspaperObj.y + newspaperObj.h > eachHouseObj.y
+      ) {
+        this.gameOver;
+      }
+    });
+  }*/
 
   gameLoop() {
     // aquí incluimos todas las acciones que están dentro del loop del juego, que se activa al iniciar el juego
@@ -42,6 +89,16 @@ class Game {
     this.housesArr.forEach((eachHouse) => {
       eachHouse.houseMovement();
     });
+
+    this.newspaperUpArr.forEach((eachNewspaper) => {
+      //this.newspaperUpAppear()
+      eachNewspaper.newspaperMovementUp();
+    });
+
+    this.newspaperDownArr.forEach((eachNewspaper) => {
+      //this.newspaperDownAppear()
+      eachNewspaper.newspaperMovementDown();
+    });
   }
 
   //el bucle del juego. Todo el juego está en un bucle, generado por un intervalo
@@ -49,6 +106,11 @@ class Game {
     setInterval(() => {
       this.gameLoop();
     }, this.gameIntervalFrequency);
+  }
+
+  gameOver() {
+    gameScreen.style.display = "none";
+    gameOverScreen.style.display = "flex";
   }
 
   //movimiento del repartidor(boy). en realidad él es estático, lo que se mueven son las casas. **

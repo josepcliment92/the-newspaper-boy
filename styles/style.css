@@ -36,7 +36,7 @@ color: white;
     overflow: hidden; 
     user-select: none; 
 
-    background-image: url("../images/floor.jpg");
-    /*background-position: center;
-    background-size: cover;*/
+    background-image: url("../images/floor.png");
+    background-position: center;
+    background-size: cover;
 }

@@ -21,19 +21,28 @@ function startGame() {
   gameObj.gameStart();
 
   setTimeout(gameObj.housesAppearUp, 1000) //.bind(this) método bind.
-  setTimeout(gameObj.housesAppearDown, 1750); // REVISAR PORQUÉ NO FUNCIONA, PREGUNTAR A JORGE !!!
-  //el objetivo es que la función de aparición de las casas de abajo arranque un tiempo después respecto a las casas de arriba, y no se muestren de forma paralela
+  setTimeout(gameObj.housesAppearDown, 1750);
 }
 
 // ADD EVENT LISTENERS
 
 startBtn.addEventListener("click", startGame);
-gameBox.addEventListener("click", () => {
+window.addEventListener("keydown", (event) => {
+if (event.key === "ArrowUp") {
+    gameObj.newspaperUpAppear(); 
+} else if (event.key === "ArrowDown") {
+    gameObj.newspaperDownAppear(); 
+}
+});
+
+
+
+/*gameBox.addEventListener("click", () => {
     gameObj.newspaperObj.newspaperMovementUp()
-})
-gameBox.addEventListener("click", () => {
+})*/
+/*gameBox.addEventListener("click", () => {
     gameObj.newspaperObj.newspaperMovementDown()
-})
+})*/
 
 
 //crear addeventlistener aquí que nos indique que, al pulsar una tecla del teclado, se reparta un periódico (es decir, se "dispare" un elemento de arriba o abajo)

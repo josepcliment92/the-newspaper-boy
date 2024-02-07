@@ -15,21 +15,31 @@ constructor() {
     this.node.style.height = `${this.h}px`;
     this.node.style.left = `${this.x}px`;
     this.node.style.top = `${this.y}px`;
+
+    this.newspaperSpeed = 2; 
 }
 
 
 
 //métodos
 newspaperMovementUp() {
-for (let i = this.y; i > 0; i--)
+this.y -= this.newspaperSpeed;
+this.node.style.top = `${this.y}px`;
+
+
+    /*for (let i = this.y; i > 0; i--)
     this.y -= 5;
     this.node.style.top = `${this.y}px`;
+    console.log("accion");*/
 }
 
 newspaperMovementDown() {
-for (let i = this.y; i > gameBox.offsetHeight; i++)
-    this.y += 5;
+    this.y += this.newspaperSpeed;
     this.node.style.top = `${this.y}px`;
+    
+    /*for (let i = this.y; i > gameBox.offsetHeight; i++)
+    this.y += 5;
+    this.node.style.top = `${this.y}px`;*/
 }
 
 }
