@@ -47,40 +47,29 @@ class Game {
     this.newspaperDownArr.push(newNewspaper);
   };
 
-  /*collitionNewspaperHouseUp() {
-    this.newspaperUpArr.forEach((eachHouseObj) => {
-      if (
-        newspaperObj.x < eachHouseObj.x + eachHouseObj.w &&
-        newspaperObj.x + newspaperObj.w > eachHouseObj.x &&
-        newspaperObj.y < eachHouseObj.y + eachHouseObj.h &&
-        newspaperObj.y + newspaperObj.h > eachHouseObj.y
-      ) {
-        this.gameOver;
-      }
-    });
-  }*/
 
   collitionNewspaperHouseUp() {
     this.newspaperUpArr.forEach((eachNewspaperObj) => {
-      if (eachNewspaperObj.y < 50) {
-        this.gameOver;
+      if (eachNewspaperObj.y < 100) {
+        eachNewspaperObj.node.remove();
+        this.newspaperUpArr.shift();
       }
     });
   }
 
-
-  /*collitionNewspaperHouseDown() {
-    this.newspaperDownArr.forEach((eachHouseObj) => {
-      if (
-        newspaperObj.x < eachHouseObj.x + eachHouseObj.w &&
-        newspaperObj.x + newspaperObj.w > eachHouseObj.x &&
-        newspaperObj.y < eachHouseObj.y + eachHouseObj.h &&
-        newspaperObj.y + newspaperObj.h > eachHouseObj.y
-      ) {
-        this.gameOver;
+  collitionNewspaperHouseDown() {
+    this.newspaperDownArr.forEach((eachNewspaperObj) => {
+      if (eachNewspaperObj.y > 370) {
+        eachNewspaperObj.node.remove();
+        this.newspaperDownArr.shift();
       }
     });
-  }*/
+  }
+
+  /*gameOverCondition() {
+       this.housesArr
+    }*/
+  
 
   gameLoop() {
     // aquí incluimos todas las acciones que están dentro del loop del juego, que se activa al iniciar el juego
@@ -99,6 +88,9 @@ class Game {
       //this.newspaperDownAppear()
       eachNewspaper.newspaperMovementDown();
     });
+
+    this.collitionNewspaperHouseUp();
+    this.collitionNewspaperHouseDown();
   }
 
   //el bucle del juego. Todo el juego está en un bucle, generado por un intervalo
