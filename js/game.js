@@ -8,23 +8,27 @@ class Game {
     this.newspaperDownArr = [];
     this.housesArr = [];
     this.houseAppearanceFrequency = 2000;
-
-    //this.houseAppearanceFrequencyUp = Math.floor(Math.random() * (2500 - 1500 + 1)) + 1500;
-    //this.houseAppearanceFrequencyDown = Math.floor(Math.random() * (2500 - 1500 + 1)) + 1500;
-
-    //this.houseEjemplo = new House();
+    this.puedeDispararArriba === false;
+    this.puedeDispararAbajo === false;
   }
 
   // métodos de la clase
+
+  activarDisparoArriba() {
+    this.puedeDispararArriba = true;
+    //console.log("probando");
+  }
+  activarDisparoAbajo() {
+    this.puedeDispararAbajo = true;
+    //console.log("probando");
+  }
 
   housesAppearUp = () => {
     //indicar que cada segundo aparece una nueva casa
     setInterval(() => {
       let newHouseUp = new House("arriba");
       this.housesArr.push(newHouseUp);
-      //console.log("aparece una casa arriba")
     }, this.houseAppearanceFrequency);
-    //console.log("aparecen casas arriba")
   };
 
   housesAppearDown = () => {
@@ -32,46 +36,22 @@ class Game {
     setInterval(() => {
       let newHouseDown = new House("abajo");
       this.housesArr.push(newHouseDown);
-      //console.log("aparece una casa abajo")
     }, this.houseAppearanceFrequency);
-    //console.log("aparecen casas abajo")
   };
 
   newspaperUpAppear = () => {
-    let newNewspaper = new Newspaper();
-    this.newspaperUpArr.push(newNewspaper);
+    if (this.puedeDispararArriba === true) {
+      let newNewspaper = new Newspaper();
+      this.newspaperUpArr.push(newNewspaper);
+    }
   };
 
   newspaperDownAppear = () => {
-    let newNewspaper = new Newspaper();
-    this.newspaperDownArr.push(newNewspaper);
+    if (this.puedeDispararAbajo === true) {
+      let newNewspaper = new Newspaper();
+      this.newspaperDownArr.push(newNewspaper);
+    }
   };
-
-  /*collitionNewspaperHouseUp() {
-    for (let i = 0; i < this.housesArr.length; i++) {
-        for (let j = 0; j < this.newspaperUpArr.length; i++) {
-            if (this.housesArr[i].x < this.newspaperUpArr[j].x + newspaperUpArr[j].w &&
-                this.housesArr[i].x + this.housesArr[i].w > newspaperUpArr[j].x &&
-                this.housesArr[i].y < newspaperUpArr[j].y + newspaperUpArr[j].h &&
-                this.housesArr[i].y + this.housesArr[i].h > newspaperUpArr[j].y) {
-                //sumar puntos a un score
-            } else (collitionNewspaperHouseUp())
-        }
-}
-}*/
-
-  /*collitionNewspaperHouseDown() {
-    for (let i = 0; i < this.housesArr.length; i++) {
-        for (let j = 0; j < this.newspaperUpArr.length; i++) {
-            if (this.housesArr[i].x < this.newspaperUpArr[j].x + newspaperUpArr[j].w &&
-                this.housesArr[i].x + this.housesArr[i].w > newspaperUpArr[j].x &&
-                this.housesArr[i].y < newspaperUpArr[j].y + newspaperUpArr[j].h &&
-                this.housesArr[i].y + this.housesArr[i].h > newspaperUpArr[j].y) {
-                this.gameOver()
-            } else (collitionNewspaperHouseDown())
-        }
-}
-}*/
 
   collitionNewspaperHouseUp() {
     this.housesArr.forEach((eachHouse) => {
@@ -129,7 +109,6 @@ class Game {
 
   gameLoop() {
     //aquí incluimos todas las acciones que están dentro del loop del juego, que se activa al iniciar el juego
-    //this.houseEjemplo.houseMovement();
 
     this.housesArr.forEach((eachHouse) => {
       eachHouse.houseMovement();
@@ -153,6 +132,9 @@ class Game {
 
   //el bucle del juego. Todo el juego está en un bucle, generado por un intervalo
   gameStart() {
+    setTimeout(this.activarDisparoArriba, 1500);
+    setTimeout(this.activarDisparoAbajo, 1500);
+
     setInterval(() => {
       this.gameLoop();
     }, this.gameIntervalFrequency);

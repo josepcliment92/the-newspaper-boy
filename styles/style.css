@@ -10,6 +10,10 @@ font-family:'Times New Roman', Times, serif
     display: none; 
 }
 
+#score {
+    margin: 20px; 
+}
+
 #game-over-screen {
     display: none; 
 }
