@@ -2,6 +2,10 @@
     display: flex; 
 }
 
+#splash-title {
+font-family:'Times New Roman', Times, serif
+}
+
 #game-screen {
     display: none; 
 }

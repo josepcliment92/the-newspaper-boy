@@ -7,7 +7,7 @@ class Game {
     this.newspaperUpArr = [];
     this.newspaperDownArr = [];
     this.housesArr = [];
-    this.houseAppearanceFrequency = 1500;
+    this.houseAppearanceFrequency = 2000;
 
     //this.houseAppearanceFrequencyUp = Math.floor(Math.random() * (2500 - 1500 + 1)) + 1500;
     //this.houseAppearanceFrequencyDown = Math.floor(Math.random() * (2500 - 1500 + 1)) + 1500;
@@ -47,32 +47,88 @@ class Game {
     this.newspaperDownArr.push(newNewspaper);
   };
 
+  /*collitionNewspaperHouseUp() {
+    for (let i = 0; i < this.housesArr.length; i++) {
+        for (let j = 0; j < this.newspaperUpArr.length; i++) {
+            if (this.housesArr[i].x < this.newspaperUpArr[j].x + newspaperUpArr[j].w &&
+                this.housesArr[i].x + this.housesArr[i].w > newspaperUpArr[j].x &&
+                this.housesArr[i].y < newspaperUpArr[j].y + newspaperUpArr[j].h &&
+                this.housesArr[i].y + this.housesArr[i].h > newspaperUpArr[j].y) {
+                //sumar puntos a un score
+            } else (collitionNewspaperHouseUp())
+        }
+}
+}*/
+
+  /*collitionNewspaperHouseDown() {
+    for (let i = 0; i < this.housesArr.length; i++) {
+        for (let j = 0; j < this.newspaperUpArr.length; i++) {
+            if (this.housesArr[i].x < this.newspaperUpArr[j].x + newspaperUpArr[j].w &&
+                this.housesArr[i].x + this.housesArr[i].w > newspaperUpArr[j].x &&
+                this.housesArr[i].y < newspaperUpArr[j].y + newspaperUpArr[j].h &&
+                this.housesArr[i].y + this.housesArr[i].h > newspaperUpArr[j].y) {
+                this.gameOver()
+            } else (collitionNewspaperHouseDown())
+        }
+}
+}*/
 
   collitionNewspaperHouseUp() {
-    this.newspaperUpArr.forEach((eachNewspaperObj) => {
-      if (eachNewspaperObj.y < 100) {
-        eachNewspaperObj.node.remove();
-        this.newspaperUpArr.shift();
-      }
+    this.housesArr.forEach((eachHouse) => {
+      this.newspaperUpArr.forEach((eachNewspaper) => {
+        if (
+          eachHouse.x < eachNewspaper.x + eachNewspaper.w &&
+          eachHouse.x + eachHouse.w > eachNewspaper.x &&
+          eachHouse.y < eachNewspaper.y + eachNewspaper.h &&
+          eachHouse.y + eachHouse.h > eachNewspaper.y
+        ) {
+          eachNewspaper.node.remove();
+          this.newspaperUpArr.shift();
+          //FALTA AÑADIR PUNTOS AL SCORE
+        }
+      });
     });
   }
 
   collitionNewspaperHouseDown() {
-    this.newspaperDownArr.forEach((eachNewspaperObj) => {
-      if (eachNewspaperObj.y > 370) {
+    this.housesArr.forEach((eachHouse) => {
+      this.newspaperDownArr.forEach((eachNewspaper) => {
+        if (
+          eachHouse.x < eachNewspaper.x + eachNewspaper.w &&
+          eachHouse.x + eachHouse.w > eachNewspaper.x &&
+          eachHouse.y < eachNewspaper.y + eachNewspaper.h &&
+          eachHouse.y + eachHouse.h > eachNewspaper.y
+        ) {
+          eachNewspaper.node.remove();
+          this.newspaperDownArr.shift();
+          //FALTA AÑADIR PUNTOS AL SCORE
+        }
+      });
+    });
+  }
+
+  disappearNewspaperUp() {
+    this.newspaperUpArr.forEach((eachNewspaperObj) => {
+      if (eachNewspaperObj.y < 100) {
         eachNewspaperObj.node.remove();
-        this.newspaperDownArr.shift();
+        this.newspaperUpArr.shift();
+        this.gameOver();
       }
     });
   }
 
-  /*gameOverCondition() {
-       this.housesArr
-    }*/
-  
+  disappearNewspaperDown() {
+    this.newspaperDownArr.forEach((eachNewspaperObj) => {
+      if (eachNewspaperObj.y > 370) {
+        eachNewspaperObj.node.remove();
+        this.newspaperDownArr.shift();
+        this.gameOver();
+      }
+    });
+  }
 
   gameLoop() {
-    // aquí incluimos todas las acciones que están dentro del loop del juego, que se activa al iniciar el juego
+    //aquí incluimos todas las acciones que están dentro del loop del juego, que se activa al iniciar el juego
     //this.houseEjemplo.houseMovement();
 
     this.housesArr.forEach((eachHouse) => {
@@ -91,6 +147,8 @@ class Game {
 
     this.collitionNewspaperHouseUp();
     this.collitionNewspaperHouseDown();
+    this.disappearNewspaperUp();
+    this.disappearNewspaperDown();
   }
 
   //el bucle del juego. Todo el juego está en un bucle, generado por un intervalo
