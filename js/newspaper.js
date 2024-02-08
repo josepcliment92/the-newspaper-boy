@@ -1,7 +1,7 @@
 class Newspaper {
 //propiedades
 constructor() {
-    this.x = 100;
+    this.x = 450;
     this.y = 205;
     this.w = 25; 
     this.h = 30;

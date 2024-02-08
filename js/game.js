@@ -8,17 +8,17 @@ class Game {
     this.newspaperDownArr = [];
     this.housesArr = [];
     this.houseAppearanceFrequency = 2000;
-    this.puedeDispararArriba === false;
-    this.puedeDispararAbajo === false;
+    this.puedeDispararArriba = false;
+    this.puedeDispararAbajo = false;
   }
 
   // métodos de la clase
 
-  activarDisparoArriba() {
+  activarDisparoArriba = () => {
     this.puedeDispararArriba = true;
     //console.log("probando");
   }
-  activarDisparoAbajo() {
+  activarDisparoAbajo = () => {
     this.puedeDispararAbajo = true;
     //console.log("probando");
   }
@@ -82,6 +82,7 @@ class Game {
           eachNewspaper.node.remove();
           this.newspaperDownArr.shift();
           //FALTA AÑADIR PUNTOS AL SCORE
+          //para cambio de imagen: acceder al nodo de eachHouse y al src. del nodo y cambiarlo por imagen nueva que has creado. 
         }
       });
     });
@@ -132,8 +133,8 @@ class Game {
 
   //el bucle del juego. Todo el juego está en un bucle, generado por un intervalo
   gameStart() {
-    setTimeout(this.activarDisparoArriba, 1500);
-    setTimeout(this.activarDisparoAbajo, 1500);
+    setTimeout(this.activarDisparoArriba, 5500);
+    setTimeout(this.activarDisparoAbajo, 5500);
 
     setInterval(() => {
       this.gameLoop();

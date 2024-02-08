@@ -22,8 +22,8 @@ function startGame() {
   //aquí se inicia el juego y todos los intervalos que arrancan con el inicio del juego pero no están dentro del gameLoop, porque no suceden 60fps.
   gameObj.gameStart();
 
-  setTimeout(gameObj.housesAppearUp, 1000) //.bind(this) método bind.
-  setTimeout(gameObj.housesAppearDown, 1750);
+  setTimeout(gameObj.housesAppearUp, 500) //.bind(this) método bind.
+  setTimeout(gameObj.housesAppearDown, 1250);
 }
 
 /*function restartGame() {
@@ -39,6 +39,11 @@ function startGame() {
     setTimeout(gameObj.housesAppearDown, 1750);
   }*/
 
+  function restartGame() {
+    location.reload()
+
+  }
+
 // ADD EVENT LISTENERS
 
 startBtn.addEventListener("click", startGame);
@@ -50,15 +55,7 @@ if (event.key === "ArrowUp") {
 }
 });
 
-//gameOverBtn.addEventListener("click", startGame); 
-
-
-/*gameBox.addEventListener("click", () => {
-    gameObj.newspaperObj.newspaperMovementUp()
-})*/
-/*gameBox.addEventListener("click", () => {
-    gameObj.newspaperObj.newspaperMovementDown()
-})*/
+gameOverBtn.addEventListener("click", restartGame); 
 
 
 //crear addeventlistener aquí que nos indique que, al pulsar una tecla del teclado, se reparta un periódico (es decir, se "dispare" un elemento de arriba o abajo)

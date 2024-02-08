@@ -1,7 +1,7 @@
 class Boy {
   //propiedades (variables que necesitamos para dibujar al repartidor)
   constructor() {
-    this.x = 50; //posición desde eje X (izquierda de la pantalla)
+    this.x = 400; //posición desde eje X (izquierda de la pantalla)
     this.y = 200; //posición desde eje Y (borde superior de la pantalla de juego, no de la pantalla total)
     this.w = 85; //width (anchura del repartidor)
     this.h = 85; //height (altura del repartidor)
