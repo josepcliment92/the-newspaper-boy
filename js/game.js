@@ -10,6 +10,7 @@ class Game {
     this.houseAppearanceFrequency = 2000;
     this.puedeDispararArriba = false;
     this.puedeDispararAbajo = false;
+    this.gameScore = 0;
   }
 
   // métodos de la clase
@@ -17,11 +18,11 @@ class Game {
   activarDisparoArriba = () => {
     this.puedeDispararArriba = true;
     //console.log("probando");
-  }
+  };
   activarDisparoAbajo = () => {
     this.puedeDispararAbajo = true;
     //console.log("probando");
-  }
+  };
 
   housesAppearUp = () => {
     //indicar que cada segundo aparece una nueva casa
@@ -64,7 +65,8 @@ class Game {
         ) {
           eachNewspaper.node.remove();
           this.newspaperUpArr.shift();
-          //FALTA AÑADIR PUNTOS AL SCORE
+          this.gameScore = this.gameScore + 1;
+          score.innerText = `Score: ${this.gameScore} points`;
         }
       });
     });
@@ -81,8 +83,9 @@ class Game {
         ) {
           eachNewspaper.node.remove();
           this.newspaperDownArr.shift();
-          //FALTA AÑADIR PUNTOS AL SCORE
-          //para cambio de imagen: acceder al nodo de eachHouse y al src. del nodo y cambiarlo por imagen nueva que has creado. 
+          this.gameScore = this.gameScore + 1;
+          score.innerText = `Score: ${this.gameScore} points`;
+          //para cambio de imagen: acceder al nodo de eachHouse y al src. del nodo y cambiarlo por imagen nueva que has creado.
         }
       });
     });
@@ -133,6 +136,7 @@ class Game {
 
   //el bucle del juego. Todo el juego está en un bucle, generado por un intervalo
   gameStart() {
+    audio.play();
     setTimeout(this.activarDisparoArriba, 5500);
     setTimeout(this.activarDisparoAbajo, 5500);
 
@@ -142,8 +146,15 @@ class Game {
   }
 
   gameOver() {
+    miAudio.pause();
     gameScreen.style.display = "none";
     gameOverScreen.style.display = "flex";
+    if (this.gameScore === 1) {
+        gameOverText.innerText = `Has repartido ${this.gameScore} periódico, ¡puedes hacerlo mejor! Vuelve a intentarlo y supérate`;
+    } else {
+        gameOverText.innerText = `Has repartido ${this.gameScore} periódicos, ¡no está mal! Pero sé que puedes hacerlo mejor. Vuelve a intentarlo y ¡supérate!`;
+    }
+    
   }
 
   //movimiento del repartidor(boy). en realidad él es estático, lo que se mueven son las casas. **

@@ -21,7 +21,5 @@ class Boy {
 
   //lanzar el periódico (disparar a los elementos para alterarlos, es decir, alterar su imagen)
 
-    //offsetHeight y offsetWidth --> identificar el alto y ancho de un elemento (lo usaré para el gameBox) --> gameBox.offsetHeight es un ejemplo
-
-
+  //offsetHeight y offsetWidth --> identificar el alto y ancho de un elemento (lo usaré para el gameBox) --> gameBox.offsetHeight es un ejemplo
 }
