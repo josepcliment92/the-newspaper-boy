@@ -7,11 +7,17 @@ font-family:'Courier New', Courier, monospace;
 font-size: 40px;
 }
 
-#splash-text {
+#splash-text1 {
     font-family:Verdana, Geneva, Tahoma, sans-serif;
     font-size: 14px;
     margin-top: 20px;
     }
+
+    #splash-text2 {
+        font-family:Verdana, Geneva, Tahoma, sans-serif;
+        font-size: 14px;
+        margin-top: 5px;
+        }
 
 #game-screen {
     display: none; 
