@@ -61,11 +61,15 @@ class Game {
           eachHouse.y < eachNewspaper.y + eachNewspaper.h &&
           eachHouse.y + eachHouse.h > eachNewspaper.y
         ) {
+          if (eachHouse.alreadyHasPaper === true) {
+            this.gameOver();
+          }
           eachNewspaper.node.remove();
           this.newspaperUpArr.shift();
           this.gameScore = this.gameScore + 1;
           score.innerText = `Score: ${this.gameScore} points`;
           eachHouse.node.src = "./images/house-with-newspaper-up.png";
+          eachHouse.alreadyHasPaper = true;
         }
       });
     });
@@ -80,11 +84,15 @@ class Game {
           eachHouse.y < eachNewspaper.y + eachNewspaper.h &&
           eachHouse.y + eachHouse.h > eachNewspaper.y
         ) {
+          if (eachHouse.alreadyHasPaper === true) {
+            this.gameOver();
+          }
           eachNewspaper.node.remove();
           this.newspaperDownArr.shift();
           this.gameScore = this.gameScore + 1;
           score.innerText = `Score: ${this.gameScore} points`;
           eachHouse.node.src = "./images/house-with-newspaper-down.png";
+          eachHouse.alreadyHasPaper = true;
         }
       });
     });
@@ -133,7 +141,7 @@ class Game {
 
   //el bucle del juego. Todo el juego está en un bucle, generado por un intervalo
   gameStart() {
-    audio.volume = 0.1; 
+    audio.volume = 0.1;
     audio.play();
     setTimeout(this.activarDisparoArriba, 5500);
     setTimeout(this.activarDisparoAbajo, 5500);

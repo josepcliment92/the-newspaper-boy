@@ -1,6 +1,13 @@
 class House {
   //propiedades
   constructor(type) {
+    let randomNumber = Math.random() * 100;
+    if (randomNumber < 20) {
+      this.alreadyHasPaper = true;
+    } else {
+      this.alreadyHasPaper = false;
+    }
+
     this.x = gameBox.offsetWidth;
     if (type === "arriba") {
       this.y = 0;
@@ -12,9 +19,13 @@ class House {
     this.h = 120;
 
     this.node = document.createElement("img");
-    if (type === "arriba") {
+    if (type === "arriba" && this.alreadyHasPaper === false) {
       this.node.src = "./images/house-up.png";
-    } else if (type === "abajo") {
+    } else if (type === "arriba" && this.alreadyHasPaper === true) {
+      this.node.src = "./images/house-with-newspaper-up.png";
+    } else if (type === "abajo" && this.alreadyHasPaper === true) {
+      this.node.src = "./images/house-with-newspaper-down.png";
+    } else if (type === "abajo" && this.alreadyHasPaper === false) {
       this.node.src = "./images/house-down.png";
     }
     gameBox.append(this.node);
