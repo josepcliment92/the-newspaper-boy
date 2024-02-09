@@ -23,19 +23,10 @@ class Newspaper {
   newspaperMovementUp() {
     this.y -= this.newspaperSpeed;
     this.node.style.top = `${this.y}px`;
-
-    /*for (let i = this.y; i > 0; i--)
-    this.y -= 5;
-    this.node.style.top = `${this.y}px`;
-    console.log("accion");*/
   }
 
   newspaperMovementDown() {
     this.y += this.newspaperSpeed;
     this.node.style.top = `${this.y}px`;
-
-    /*for (let i = this.y; i > gameBox.offsetHeight; i++)
-    this.y += 5;
-    this.node.style.top = `${this.y}px`;*/
   }
 }

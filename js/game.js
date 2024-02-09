@@ -17,15 +17,13 @@ class Game {
 
   activarDisparoArriba = () => {
     this.puedeDispararArriba = true;
-    //console.log("probando");
   };
   activarDisparoAbajo = () => {
     this.puedeDispararAbajo = true;
-    //console.log("probando");
   };
 
   housesAppearUp = () => {
-    //indicar que cada segundo aparece una nueva casa
+    //indicar que cada segundo aparece una nueva casa (arriba)
     setInterval(() => {
       let newHouseUp = new House("arriba");
       this.housesArr.push(newHouseUp);
@@ -33,7 +31,7 @@ class Game {
   };
 
   housesAppearDown = () => {
-    //indicar que cada segundo aparece una nueva casa
+    //indicar que cada segundo aparece una nueva casa (abajo)
     setInterval(() => {
       let newHouseDown = new House("abajo");
       this.housesArr.push(newHouseDown);
@@ -67,6 +65,7 @@ class Game {
           this.newspaperUpArr.shift();
           this.gameScore = this.gameScore + 1;
           score.innerText = `Score: ${this.gameScore} points`;
+          eachHouse.node.src = "./images/house-with-newspaper-up.png"
         }
       });
     });
@@ -85,7 +84,7 @@ class Game {
           this.newspaperDownArr.shift();
           this.gameScore = this.gameScore + 1;
           score.innerText = `Score: ${this.gameScore} points`;
-          //para cambio de imagen: acceder al nodo de eachHouse y al src. del nodo y cambiarlo por imagen nueva que has creado.
+          eachHouse.node.src = "./images/house-with-newspaper-down.png"
         }
       });
     });
@@ -119,12 +118,10 @@ class Game {
     });
 
     this.newspaperUpArr.forEach((eachNewspaper) => {
-      //this.newspaperUpAppear()
       eachNewspaper.newspaperMovementUp();
     });
 
     this.newspaperDownArr.forEach((eachNewspaper) => {
-      //this.newspaperDownAppear()
       eachNewspaper.newspaperMovementDown();
     });
 
@@ -150,15 +147,12 @@ class Game {
     gameScreen.style.display = "none";
     gameOverScreen.style.display = "flex";
     if (this.gameScore === 1) {
-        gameOverText.innerText = `Has repartido ${this.gameScore} periódico, ¡puedes hacerlo mejor! Vuelve a intentarlo y supérate`;
+      gameOverText.innerText = `Has repartido ${this.gameScore} periódico, ¡puedes hacerlo mejor! Vuelve a intentarlo y supérate`;
+    } else if (this.gameScore === 0) {
+      gameOverText.innerText =
+        "No has repartido ningún periódico, ¡sigue intentándolo! A la próxima tendrás más suerte";
     } else {
-        gameOverText.innerText = `Has repartido ${this.gameScore} periódicos, ¡no está mal! Pero sé que puedes hacerlo mejor. Vuelve a intentarlo y ¡supérate!`;
+      gameOverText.innerText = `Has repartido ${this.gameScore} periódicos, ¡no está mal! Pero sé que puedes hacerlo mejor. Vuelve a intentarlo y ¡supérate!`;
     }
-    
   }
-
-  //movimiento del repartidor(boy). en realidad él es estático, lo que se mueven son las casas. **
-  //movimiento de las casas(houses)
-  //aparición y desaparición de las casas (spawning)
-  //"disparos" del repartidor a las casas. la acción de repartir el periódico (con un add event listener)
 }
