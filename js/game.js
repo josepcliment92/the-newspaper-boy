@@ -65,7 +65,7 @@ class Game {
           this.newspaperUpArr.shift();
           this.gameScore = this.gameScore + 1;
           score.innerText = `Score: ${this.gameScore} points`;
-          eachHouse.node.src = "./images/house-with-newspaper-up.png"
+          eachHouse.node.src = "./images/house-with-newspaper-up.png";
         }
       });
     });
@@ -84,7 +84,7 @@ class Game {
           this.newspaperDownArr.shift();
           this.gameScore = this.gameScore + 1;
           score.innerText = `Score: ${this.gameScore} points`;
-          eachHouse.node.src = "./images/house-with-newspaper-down.png"
+          eachHouse.node.src = "./images/house-with-newspaper-down.png";
         }
       });
     });
@@ -133,6 +133,7 @@ class Game {
 
   //el bucle del juego. Todo el juego está en un bucle, generado por un intervalo
   gameStart() {
+    audio.volume = 0.1; 
     audio.play();
     setTimeout(this.activarDisparoArriba, 5500);
     setTimeout(this.activarDisparoAbajo, 5500);

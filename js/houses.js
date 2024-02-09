@@ -29,7 +29,6 @@ class House {
   }
 
   // métodos
-
   houseMovement() {
     this.x -= this.houseSpeed;
     this.node.style.left = `${this.x}px`;
